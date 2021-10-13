@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-tree',
@@ -7,9 +8,19 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class TreeComponent implements OnInit {
   constructor() {}
-  @Input() data: Array<Tree> = new Array<Tree>();
-  @Input() isChild: boolean = false;
-  ngOnInit(): void {}
+  data: Array<Tree> = new Array<Tree>();
+  rawData: Array<Tree> = new Array<Tree>();
+  @Input() dataObservable: Observable<any> = new Observable<any>();
+  ngOnInit(): void {
+    this.dataObservable.subscribe((x) => {
+      this.rawData = x;
+      for (var i in x) {
+        x[i]['elementID'] = i;
+        this.data.push(x[i]);
+      }
+      console.log(this.data);
+    });
+  }
   expandCollapse(elem: any) {
     var element = elem as HTMLElement;
 
@@ -21,11 +32,17 @@ export class TreeComponent implements OnInit {
   }
   getIcon(elem: any) {
     var element = elem as HTMLElement;
-    return element.classList.contains('expanded') ? 'horizontal_rule' : 'add';
+    return element.classList.contains('expanded')
+      ? 'keyboard_arrow_up'
+      : 'keyboard_arrow_down';
+  }
+  findElementByID(elementID: string) {
+    return [this.data.find((x) => x.elementID == elementID)];
   }
 }
 export interface Tree {
   id: number;
+  elementID: string;
   name: string;
   child: [];
 }

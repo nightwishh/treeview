@@ -3,6 +3,9 @@
         {
         "name": "I am parent of all --- A",
 		"children": [
+        {
+            "elementName":"b"
+        },
 		{
 			"name": "I am first child"
 		},

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Tree } from './tree/tree.component';
 
 @Component({
@@ -11,12 +12,15 @@ export class AppComponent implements OnInit {
   title = 'treeview';
   constructor(private http: HttpClient) {}
   data: Array<Tree> = new Array<Tree>();
+  dataObservable: Observable<any> = new Observable<any>();
   ngOnInit() {
-    this.GetData().subscribe((x: any) => {
-      for (var i in x) {
-        this.data.push(x[i]);
-      }
-    });
+    this.dataObservable = this.GetData();
+    // this.GetData().subscribe((x: any) => {
+    //   console.log(x);
+    //   for (var i in x) {
+    //     this.data.push(x[i]);
+    //   }
+    // });
   }
   GetData() {
     return this.http.get('../assets/jsonfile/example.json', {});
