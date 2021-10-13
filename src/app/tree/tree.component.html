@@ -1,0 +1,17 @@
+<ng-template #treeView let-data="data" let-path="path">
+    <div class="tree" *ngFor="let list of data" #tree>
+        <i class="material-icons" *ngIf="list.children?.length > 0;else emptyIcon"
+            (click)="expandCollapse(tree)">{{this.getIcon(tree)}}</i>
+        <ng-template #emptyIcon>
+            <i class="material-icons"></i>
+        </ng-template>
+        <span>{{list?.name}}</span>
+        <div class="children" *ngIf="list?.name && list?.children != null && list?.children?.length > 0;">
+            <ng-container *ngTemplateOutlet="treeView; context:{data:list?.children}">
+            </ng-container>
+        </div>
+    </div>
+</ng-template>
+<div class="treeview">
+    <ng-container *ngTemplateOutlet="treeView; context:{ data: data,path:null} "></ng-container>
+</div>

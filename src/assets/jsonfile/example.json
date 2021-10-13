@@ -1,0 +1,41 @@
+{
+       "a":
+        {
+        "name": "I am parent of all --- A",
+		"children": [
+		{
+			"name": "I am first child"
+		},
+		{
+			"name": "I am the second child, and i also have a child",
+            "children": [
+                {
+                    "name":"I am a child here",
+                    "children":[
+                        {
+                        "name":"I am a child again"
+                    }
+                ]
+                }
+            ]
+		}
+		]
+        },
+		"b":
+        {
+        "name": "I am parent of all --- B",
+		"children": [
+		{
+			"name": "I am first child"
+		},
+		{
+			"name": "I am the second child, and i also have a child",
+            "children": [
+                {
+                    "name":"I am a child here"
+                }
+            ]
+		}
+		]
+        }
+}
