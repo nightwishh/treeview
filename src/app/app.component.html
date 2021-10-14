@@ -1,1 +1,2 @@
-<app-tree [dataObservable]="dataObservable"></app-tree>
+<input type="file" (change)="fileChanged($event)" />
+<app-tree [file]="this.file" *ngIf="showTree"></app-tree>

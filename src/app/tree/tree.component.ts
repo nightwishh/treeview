@@ -10,17 +10,36 @@ export class TreeComponent implements OnInit {
   constructor() {}
   data: Array<Tree> = new Array<Tree>();
   rawData: Array<Tree> = new Array<Tree>();
-  @Input() dataObservable: Observable<any> = new Observable<any>();
+  // @Input() dataObservable: Observable<any> = new Observable<any>();
+  @Input() file: File = new File([], '', {});
   ngOnInit(): void {
-    this.dataObservable.subscribe((x) => {
-      this.rawData = x;
+    // this.dataObservable.subscribe((x) => {
+    //   this.rawData = x;
+    //   for (var i in x) {
+    //     x[i]['elementID'] = i;
+    //     this.data.push(x[i]);
+    //   }
+    //   console.log(this.data);
+    // });
+    this.readFile();
+  }
+
+  readFile() {
+    let fileReader = new FileReader();
+    var $rawData = [{}];
+    fileReader.onload = (e) => {
+      var bs = fileReader.result as string;
+      var x = JSON.parse(bs);
+      console.log(x);
       for (var i in x) {
         x[i]['elementID'] = i;
         this.data.push(x[i]);
       }
       console.log(this.data);
-    });
+    };
+    fileReader.readAsText(this.file);
   }
+  parseJsonData() {}
   expandCollapse(elem: any) {
     var element = elem as HTMLElement;
 

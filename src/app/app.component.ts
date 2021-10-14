@@ -13,6 +13,7 @@ export class AppComponent implements OnInit {
   constructor(private http: HttpClient) {}
   data: Array<Tree> = new Array<Tree>();
   dataObservable: Observable<any> = new Observable<any>();
+  showTree: boolean = false;
   ngOnInit() {
     this.dataObservable = this.GetData();
     // this.GetData().subscribe((x: any) => {
@@ -24,5 +25,10 @@ export class AppComponent implements OnInit {
   }
   GetData() {
     return this.http.get('../assets/jsonfile/example.json', {});
+  }
+  file: any;
+  fileChanged(e: any) {
+    this.file = e.target.files[0];
+    this.showTree = true;
   }
 }
