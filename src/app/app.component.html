@@ -1,2 +1,2 @@
 <input type="file" (change)="fileChanged($event)" />
-<app-tree [file]="this.file" *ngIf="showTree"></app-tree>
+<app-tree [file]="this.file" *ngFor="let x of fileArr"></app-tree>

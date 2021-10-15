@@ -12,10 +12,9 @@ export class AppComponent implements OnInit {
   title = 'treeview';
   constructor(private http: HttpClient) {}
   data: Array<Tree> = new Array<Tree>();
-  dataObservable: Observable<any> = new Observable<any>();
-  showTree: boolean = false;
+  // dataObservable: Observable<any> = new Observable<any>();
   ngOnInit() {
-    this.dataObservable = this.GetData();
+    // this.dataObservable = this.GetData();
     // this.GetData().subscribe((x: any) => {
     //   console.log(x);
     //   for (var i in x) {
@@ -23,12 +22,13 @@ export class AppComponent implements OnInit {
     //   }
     // });
   }
-  GetData() {
-    return this.http.get('../assets/jsonfile/example.json', {});
-  }
+  // GetData() {
+  //   return this.http.get('../assets/jsonfile/example.json', {});
+  // }
   file: any;
+  fileArr: Array<any> = new Array();
   fileChanged(e: any) {
     this.file = e.target.files[0];
-    this.showTree = true;
+    this.fileArr.push(this.file);
   }
 }
