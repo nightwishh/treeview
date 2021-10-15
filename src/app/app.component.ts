@@ -25,10 +25,9 @@ export class AppComponent implements OnInit {
   // GetData() {
   //   return this.http.get('../assets/jsonfile/example.json', {});
   // }
-  file: any;
   fileArr: Array<any> = new Array();
   fileChanged(e: any) {
-    this.file = e.target.files[0];
-    this.fileArr.push(this.file);
+    // this.file = e.target.files[0];
+    this.fileArr = e.target.files as Array<File>;
   }
 }
