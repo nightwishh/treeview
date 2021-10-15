@@ -27,7 +27,9 @@ export class AppComponent implements OnInit {
   // }
   fileArr: Array<any> = new Array();
   fileChanged(e: any) {
-    // this.file = e.target.files[0];
-    this.fileArr = e.target.files as Array<File>;
+    var files = e.target.files as Array<File>;
+    for (var i = 0; i < files.length; i++) {
+      this.fileArr.push(files[i]);
+    }
   }
 }
