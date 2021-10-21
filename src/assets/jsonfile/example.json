@@ -1,6 +1,6 @@
 {
        "a":
-        {
+        [{
         "name": "I am parent of all --- A",
 		"children": [
         {
@@ -24,8 +24,32 @@
 		}
 		]
         },
-		"b":
         {
+            "name": "2222 I am parent of all --- A",
+            "children": [
+            {
+                "elementName":"b"
+            },
+            {
+                "name": "I am first child"
+            },
+            {
+                "name": "I am the second child, and i also have a child",
+                "children": [
+                    {
+                        "name":"I am a child here",
+                        "children":[
+                            {
+                            "name":"I am a child again"
+                        }
+                    ]
+                    }
+                ]
+            }
+            ]
+            }],
+		"b":
+        [{
         "name": "I am parent of all --- B",
 		"children": [
 		{
@@ -40,5 +64,5 @@
             ]
 		}
 		]
-        }
+        }]
 }

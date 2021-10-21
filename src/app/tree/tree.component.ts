@@ -56,6 +56,7 @@ export class TreeComponent implements OnInit {
       : 'keyboard_arrow_down';
   }
   findElementByID(elementID: string) {
+    console.log(this.data.find((x) => x.elementID == elementID));
     return [this.data.find((x) => x.elementID == elementID)];
   }
 }
