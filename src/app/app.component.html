@@ -1,2 +1,5 @@
 <input type="file" (change)="fileChanged($event)" [multiple]="true" style="float: left; width: 100%; display: block;" />
-<app-tree [file]="this.file" *ngFor="let file of fileArr" style="float:left;margin-top:20px"></app-tree>
+<app-custom-tree [file]="this.file" *ngFor="let file of fileArr" style="float:left;margin-top:20px">
+</app-custom-tree>
+
+<!-- <app-tree [file]="this.file" *ngFor="let file of fileArr" style="float:left;margin-top:20px"></app-tree> -->

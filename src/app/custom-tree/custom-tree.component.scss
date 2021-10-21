@@ -1,0 +1,36 @@
+.tree {
+  display: grid;
+  grid-gap: 0px;
+  gap: 0px;
+  align-items: center;
+  cursor: pointer;
+  grid-template-columns: 25px auto;
+  min-width: 250vh;
+  font-weight: bold;
+}
+.treeview > .tree {
+  margin-left: 0px !important;
+}
+.tree {
+  margin-left: 20px;
+}
+.children {
+  display: none;
+}
+.hide {
+  display: none;
+}
+.show {
+  display: block;
+}
+.parentLevel {
+  margin-left: 0px;
+}
+
+.material-icons {
+  user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
+}

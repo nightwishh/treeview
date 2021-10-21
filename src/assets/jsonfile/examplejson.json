@@ -1,0 +1,66 @@
+{
+  "devices": [
+    {
+      "name": "Device1",
+      "url": "Url1"
+    },
+    {
+      "name": "Device2",
+      "url": "Url2"
+    }
+  ],
+  "commands": [
+    {
+      "name": "enable",
+      "method": "enable"
+    }
+  ],
+  "nodeCommands": [
+    {
+      "name": "enableStep",
+      "path": "somePathToObject",
+      "command": "enable"
+    }
+  ],
+  "assertRules": [
+    {
+      "name": "equals10",
+      "equal": 10
+    }
+  ],
+  "nodeAsserts": [
+    {
+      "name": "enableStep",
+      "path": "somePathToObject",
+      "rule": "equals10"
+    }
+  ],
+  "executionSteps": [
+    {
+      "name": "enableStep",
+      "nodeCommand": "enableStep",
+      "nodeAssert": "enableStep"
+    },
+    {
+      "name": "anotherEnableStep",
+      "nodeCommand": "enableStep",
+      "nodeAssert": "enableStep"
+    }
+  ],
+  "scenarios": [
+    {
+      "name": "ScenariosName",
+      "timeout": 10,
+      "steps": [
+        {
+          "device": "Device1",
+          "step": "enableStep"
+        },
+        {
+          "device": "Device2",
+          "step": "anotherEnableStep"
+        }
+      ]
+    }
+  ]
+}
