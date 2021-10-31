@@ -5,11 +5,13 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { TreeComponent } from './tree/tree.component';
 import { CustomTreeComponent } from './custom-tree/custom-tree.component';
+import { CustomTree2Component } from './custom-tree2/custom-tree2.component';
 @NgModule({
   declarations: [
     AppComponent,
     TreeComponent,
-    CustomTreeComponent
+    CustomTreeComponent,
+    CustomTree2Component
   ],
   imports: [
     BrowserModule,
