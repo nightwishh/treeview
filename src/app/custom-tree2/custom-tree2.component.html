@@ -5,7 +5,7 @@
         <ng-template #emptyIcon>
             <i class="material-icons"></i>
         </ng-template>
-        <span>{{list?.name}}</span>
+        <span [title]="list?.tooltip == null ? '' : list?.tooltip">{{list?.name}}</span>
         <div class="children" *ngIf="list?.name && list?.children != null && list?.children?.length > 0">
             <ng-container *ngTemplateOutlet="treeView; context:{data:list?.children}">
             </ng-container>
@@ -13,13 +13,13 @@
     </div>
 </ng-template>
 <div class="treeview">
-    <ng-container *ngFor="let d of data">
-        <div class="tree" #tree>
-            <i class="material-icons" (click)="expandCollapse(tree)">{{this.getIcon(tree)}}</i>
-            <span>{{d?.elementID}}</span>
-            <div class="children">
-                <ng-container *ngTemplateOutlet="treeView; context:{ data: d.children,path:null} "></ng-container>
-            </div>
-        </div>
-    </ng-container>
+    <!-- <ng-container *ngFor="let d of data"> -->
+    <!-- <div class="tree" #tree> -->
+    <!-- <i class="material-icons" (click)="expandCollapse(tree)">{{this.getIcon(tree)}}</i> -->
+    <!-- <span>{{d?.elementID}}</span> -->
+    <!-- <div class="children"> -->
+    <ng-container *ngTemplateOutlet="treeView; context:{ data: data,path:null} "></ng-container>
+    <!-- </div> -->
+    <!-- </div> -->
+    <!-- </ng-container> -->
 </div>

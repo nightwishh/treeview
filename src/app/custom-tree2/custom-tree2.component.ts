@@ -84,12 +84,14 @@ export class CustomTree2Component implements OnInit {
         {
           elementID: x.name,
           name: 'path:' + x.path,
+          tooltip: 'nodeCommands->path',
         },
         {
           elementID: x.name,
           name:
             'method:' +
             this.jsonData.commands.find((a) => a.name == x.command)?.method,
+          tooltip: 'command->method',
         }
       );
     });
@@ -106,10 +108,12 @@ export class CustomTree2Component implements OnInit {
         {
           elementID: x.name,
           name: 'path:' + x.path,
+          tooltip: 'nodeAsserts->path',
         },
         {
           elementID: x.name,
           name: 'rule: ' + rules[0].elementID,
+          tooltip: 'nodeAsserts->rule',
         }
       );
     });
@@ -125,10 +129,6 @@ export class CustomTree2Component implements OnInit {
         (a) => a.elementID == x.nodeAssert
       );
       this.jsonData.executionSteps.push(
-        {
-          elementID: x.name,
-          name: 'name:' + x.name,
-        },
         {
           elementID: x.name,
           name: 'Commnad:' + commands[0].elementID,
@@ -179,10 +179,10 @@ export class CustomTree2Component implements OnInit {
           // }
         );
       });
-      newData.push({ name: 'name:' + x.name, children: x.steps });
+      // newData.push({ name: 'name:' + x.name, children: x.steps });
       // newData.push({ name: 'steps', children: x.steps });
       // newData.push({ name: 'timeout:' + x.timeout });
-      this.data.push({ elementID: 'scenarios', children: newData });
+      this.data.push({ name: x.name, children: x.steps });
     });
   }
   assembleScenarios() {
@@ -222,6 +222,7 @@ export class CustomTree2Component implements OnInit {
 export class TreeView {
   public elementID: string = '';
   public children?: Array<any> = new Array<any>();
+  public tooltip?: string = '';
 }
 export class myJson {
   public devices: Array<devices> = new Array<devices>();
